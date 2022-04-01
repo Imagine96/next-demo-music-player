@@ -21,7 +21,7 @@ const GradientLayout: React.FC<Props> = ({ img, title, subtittle, description, c
                     <Box padding="1rem" >
                         <Image boxSize="10rem" boxShadow="2xl" src={img} borderRadius={roundImage ? "full" : "lg"} />
                     </Box>
-                    <Box padding="1rem" lineHeight="2rem" paddingBottom="5rem" >
+                    <Box padding="1rem" lineHeight="2rem" >
                         <Text fontSize="x-small" fontWeight="bold" casing="uppercase" >
                             {subtittle}
                         </Text>

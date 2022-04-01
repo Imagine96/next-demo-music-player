@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Box } from "@chakra-ui/layout";
 import { PopulatedSong } from "../SongsTable";
-import Card, { PopulatedPlaylist } from "./Card";
+import Card, { PopulatedPlaylist } from "../Card";
 import Link from "next/link";
 
 interface Props {
