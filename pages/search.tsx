@@ -38,8 +38,6 @@ const Home: NextPage = () => {
         playFullPlaylist([song] || songs)
     }
 
-    console.log(searchResult)
-
     return (
 
         isLoading ?

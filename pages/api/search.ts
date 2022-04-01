@@ -14,7 +14,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse, user: User) =>
     try {
         const keyword = req.body.keyword as string
         const resp = await searchByText(keyword)
-        console.log(resp)
         res.status(200)
         res.json(resp)
         return
