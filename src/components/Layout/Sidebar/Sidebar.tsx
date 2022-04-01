@@ -16,7 +16,7 @@ const NAVMENU: {
 }, {
     name: "Search",
     icon: MdSearch,
-    link: "/"
+    link: "/search"
 }, {
     name: "Your library",
     icon: MdLibraryMusic,
@@ -59,8 +59,8 @@ const Sidebar: React.FC = ({ }) => {
                             <LinkBox>
                                 <Link href={nav.link} >
                                     <LinkOverlay>
-                                        <ListIcon as={nav.icon} color={nav.name === "Search" ? "gray.600" : "white"} />
-                                        <Text display="inline" color={nav.name === "Search" ? "gray.600" : "white"}> {nav.name} </Text>
+                                        <ListIcon as={nav.icon} color={"white"} />
+                                        <Text display="inline" color={"white"}> {nav.name} </Text>
                                     </LinkOverlay>
                                 </Link>
                             </LinkBox>

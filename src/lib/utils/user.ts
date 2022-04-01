@@ -10,3 +10,37 @@ export const updateFavorites = async (userId: number, favorites: number[]) => {
     })
     return user
 }
+
+export const searchByText = async (toSearchFor: string) => {
+
+    const songs = await prisma.song.findMany({
+        include: {
+            artist: {
+                select: {
+                    name: true,
+                    id: true
+                }
+            }
+        }
+    })
+
+    const artists = await prisma.artist.findMany({
+        include: {
+            songs: {
+                include: {
+                    artist: {
+                        select: {
+                            name: true,
+                            id: true
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+    return {
+        songs: songs.filter(song => song.name.toUpperCase().includes(toSearchFor.toUpperCase()) || song.description.toUpperCase().includes(toSearchFor.toUpperCase())),
+        artists: artists.filter(artist => artist.name.toUpperCase().includes(toSearchFor.toUpperCase()))
+    }
+}

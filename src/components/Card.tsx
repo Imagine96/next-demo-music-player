@@ -1,8 +1,8 @@
 import { Box, Text } from "@chakra-ui/layout";
 import { Image, Spinner } from "@chakra-ui/react";
 import { Artist } from "@prisma/client";
-import useRandomImage from "../../hooks/useRandomImage"
-import { PopulatedSong } from "../SongsTable";
+import useRandomImage from "../hooks/useRandomImage"
+import { PopulatedSong } from "./SongsTable";
 import { Playlist } from "@prisma/client";
 
 export interface PopulatedPlaylist extends Playlist {
