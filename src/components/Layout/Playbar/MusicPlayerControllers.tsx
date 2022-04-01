@@ -39,10 +39,14 @@ const MusicPlayerControllers: React.FC<Props> = ({ activeSong, songs, volumen })
     const [random, setRandom] = useState<boolean>(false)
     const [duration, setDuration] = useState<number>()
     const soundRef = useRef(null)
+    const repeatRef = useRef(repeat)
     const setActiveSong = useStoreActions((state: any) => state.changeActiveSong)
 
     useEffect(() => {
+        repeatRef.current = repeat
+    }, [repeat])
 
+    useEffect(() => {
         let timerId: number
         if (isPlaying && !isSeeking && soundRef.current) {
             const f = () => {
@@ -104,7 +108,7 @@ const MusicPlayerControllers: React.FC<Props> = ({ activeSong, songs, volumen })
     }
 
     const onEndHandler = () => {
-        if (repeat) {
+        if (repeatRef.current) {
             soundRef.current.seek(index)
             setSeek(0)
         } else {
