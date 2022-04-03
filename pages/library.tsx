@@ -36,8 +36,8 @@ const Home: NextPage<Props> = ({ playlists }) => {
     const setActiveSong = useStoreActions((store: any) => store.changeActiveSong)
 
     const playHandler = (song?: PopulatedSong, songs?: PopulatedSong[]) => {
-        setActiveSong(song || songs[0])
-        playFullPlaylist([song] || songs)
+        setActiveSong(song ? song : songs[0])
+        playFullPlaylist(song ? [song] : songs)
     }
 
     return (

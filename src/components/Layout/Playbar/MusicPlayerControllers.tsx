@@ -61,11 +61,16 @@ const MusicPlayerControllers: React.FC<Props> = ({ activeSong, songs, volumen })
         }
         cancelAnimationFrame(timerId)
 
-    }, [isPlaying, isSeeking])
+    }, [isPlaying, isSeeking, activeSong])
+
+    useEffect(() => {
+        setSeek(0.0)
+    }, [activeSong])
 
     useEffect(() => {
         if (songs && index !== -1) {
             setActiveSong(songs[index])
+            setSeek(0.0)
         }
     }, [index, songs, setActiveSong])
 
@@ -178,7 +183,7 @@ export default MusicPlayerControllers
 function getIndex(songs: PopulatedSong[], targetSong: PopulatedSong) {
     let resp = -1
     songs.forEach((song, index) => {
-        if (song.id === targetSong.id) {
+        if (song.name === targetSong.name) {
             resp = index
         }
     })
