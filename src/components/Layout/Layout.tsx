@@ -12,10 +12,10 @@ const Layout: React.FC<Props> = ({ children }) => {
 
     const [childrenMediaQueryController] = useMediaQuery('(max-width: 700px)')
 
-    const [sideBarOpen, setSideBarOpen] = useState<boolean>(childrenMediaQueryController ? false : true)
+    const [sideBarOpen, setSideBarOpen] = useState<boolean>(true)
 
     return (
-        <Box width={"100vw"} overflow="hidden" display={"grid"} position="relative" gridTemplateRows={{ sm: "unset", md: "0.9fr 0.1fr" }} gridAutoColumns={{ sm: "unset", md: "1fr" }} gridGap="0" height={"100vh"} >
+        <Box width={"100vw"} overflow="hidden" display={"grid"} position="relative" gridTemplateRows="1fr" gridAutoColumns={{ sm: "unset", md: "1fr" }} gridGap="0" height={"100vh"} >
             {
                 childrenMediaQueryController ? (
                     <Center position="absolute" zIndex="10" top="2rem" marginX="50%" visibility={{ sm: "visible", md: "hidden" }} onClick={() => setSideBarOpen(prev => !prev)} >

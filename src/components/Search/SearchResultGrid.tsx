@@ -14,7 +14,7 @@ const SearchResultGrid: React.FC<Props> = ({ content, playHandler }) => {
 
 
     return (
-        <Box display="grid" maxHeight={widthMediaQueryController ? "40vh" : "60vh"} height="full" gridTemplateColumns={{ sm: "1fr", md: "1fr 1fr 1fr 1fr" }} gap={"0.8rem"} placeItems="center" overflowY="auto" padding="2rem" >
+        <Box display="grid" marginBottom="15rem" height="full" gridTemplateColumns={{ sm: "1fr", md: "1fr 1fr 1fr 1fr" }} gap={"0.8rem"} placeItems="center" padding="2rem" >
             {
                 content.artists.map(artist => <Card key={artist.name} artist={artist} playHandler={playHandler} />)
             }

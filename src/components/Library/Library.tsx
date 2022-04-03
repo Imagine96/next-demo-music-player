@@ -41,8 +41,8 @@ const Library: React.FC<Props> = ({ playHandler, playlists }) => {
     }, [playlists])
 
     return (
-        <Box display="grid" gridTemplateColumns={widthMediaQueryController ? "1fr 1fr 1fr 1fr" : "1fr"} gap="1rem" placeItems="center" padding="2rem" paddingTop="4rem" maxHeight="100vh" overflowY={"auto"}>
-            <Box width="80%" padding="2" display="flex" flexDirection="column" gap="1rem" height="80%" overflow="auto" bgGradient="linear(to-l, #7928CA, #FF0080)" gridColumnStart="1" gridColumnEnd={widthMediaQueryController ? "3" : "1"} >
+        <Box display="grid" marginBottom="5rem" gridTemplateColumns={widthMediaQueryController ? "1fr 1fr 1fr 1fr" : "1fr"} gap="1rem" placeItems="center" padding="2rem" paddingTop="4rem" maxHeight="100vh" overflowY={"auto"}>
+            <Box width="80%" padding="2" display="flex" flexDirection="column" gap="1rem" height="15rem" overflow="auto" bgGradient="linear(to-l, #7928CA, #FF0080)" gridColumnStart="1" gridColumnEnd={widthMediaQueryController ? "3" : "auto"} >
                 <Link passHref href="https://uppbeat.io/t/moire/dont-worry">
                     <a target="_blank">
                         Music from Uppbeat (free for Creators!):
