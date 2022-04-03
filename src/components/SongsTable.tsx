@@ -6,7 +6,6 @@ import { Song } from "@prisma/client"
 import { formatDate, formatTime } from "../lib/formaters"
 import { MdOutlineFavorite } from "react-icons/md"
 import { useState } from "react"
-import { updateFavorites } from "../lib/utils/user"
 import { fetcher } from "../lib/utils/fetchers"
 
 export interface PopulatedSong extends Song {
@@ -52,7 +51,7 @@ const SongsTable: React.FC<Props> = ({ songs, playHandler, favorites, favoriteOn
     }
 
     return (
-        <Box bg="transparent" maxHeight={childrenMediaQueryController ? "30vh" : "45vh"} overflowY="auto" padding={"1rem"}>
+        <Box bg="transparent" padding={"1rem"} marginBottom="10vh">
             <Box marginBottom="1rem" >
                 <IconButton onClick={() => playHandler()} icon={<BsFillPlayFill fontSize="24px" />} colorScheme="green" size="md" isRound aria-label="play" />
             </Box>
