@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link"
 import { Box, List, Text, ListIcon, Divider, LinkBox, LinkOverlay, ListItem } from "@chakra-ui/layout";
 import { usePlaylist } from "../../../hooks/usePlaylist";
 import { MdHome, MdSearch, MdLibraryMusic, MdPlaylistAdd, MdFavorite } from "react-icons/md";
+
+interface Props {
+
+}
 
 const NAVMENU: {
     name: string,
@@ -35,7 +39,7 @@ const MUSICMENU: typeof NAVMENU = [
     }
 ]
 
-const Sidebar: React.FC = ({ }) => {
+const Sidebar: React.FC<Props> = ({ }) => {
 
     const { playlists, isLoading, error } = usePlaylist()
 

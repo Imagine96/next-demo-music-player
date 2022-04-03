@@ -19,8 +19,9 @@ interface Props {
     playHandler: (song?: PopulatedSong, songs?: PopulatedSong[]) => void
 }
 
-const Card: React.FC<Props> = ({ artist, song, playlist, playHandler }) => {
 
+
+const Card: React.FC<Props> = ({ artist, song, playlist, playHandler }) => {
 
     if (artist) {
         const { imgUrl, isLoading } = useRandomImage()

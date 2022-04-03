@@ -15,17 +15,17 @@ interface Props {
 
 const GradientLayout: React.FC<Props> = ({ img, title, subtittle, description, color, children, roundImage, noContent }) => {
     return (
-        <Box color="white" maxHeight="90vh" position="relative" overflowY="auto" overflowX="hidden" placeItems="center" bgGradient={`linear(${color}.500 0%, ${color}.600 15%, ${color}.700 40% , rgba(0,0,0, 0.95) 75%)`} height="full" width="full" >
+        <Box color="white" position="relative" overflow="hidden" placeItems="center" bgGradient={`linear(${color}.500 0%, ${color}.600 15%, ${color}.700 40% , rgba(0,0,0, 0.95) 75%)`} height="100vh" width="full" >
             {noContent ? null : (
-                <Flex padding="2rem" height="35%" bg={`${color}.600`} align="end" >
+                <Flex padding={{ sm: "0.5rem", md: "2rem" }} display="flex" flexDir="row" alignItems="flex-end" bg={`${color}.600`} align="end" width="full" justifyContent={{ sm: "space-between", md: "normal" }} >
                     <Box padding="1rem" >
                         <Image boxSize="10rem" boxShadow="2xl" src={img} borderRadius={roundImage ? "full" : "lg"} />
                     </Box>
-                    <Box padding="1rem" lineHeight="2rem" >
-                        <Text fontSize="x-small" fontWeight="bold" casing="uppercase" >
+                    <Box padding="1rem" h="80%" display="flex" flexDirection="column" justifyContent="flex-end" lineHeight={{ sm: "1rem", md: "2rem" }} >
+                        <Text fontSize="x-small" paddingLeft="2" fontWeight="bold" casing="uppercase" >
                             {subtittle}
                         </Text>
-                        <Text as="h1" marginY="1rem" fontWeight="light" casing="capitalize" fontSize="6xl" >
+                        <Text as="h1" paddingLeft="2" marginY="1rem" fontWeight="light" casing="capitalize" fontSize={{ sm: "lg", md: "6xl" }} >
                             {title}
                         </Text>
                         <Text paddingLeft="2" fontSize="x-small" >
