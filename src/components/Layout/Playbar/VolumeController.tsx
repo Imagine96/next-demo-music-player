@@ -31,7 +31,7 @@ const VolumeController: React.FC<Props> = ({ volumen, setVolumen }) => {
 
     return (
         <Box width="20%" position="relative" >
-            <Box color="gray-200" >
+            <Center color="gray-200" >
                 {
                     widthMediaQueryController ? (
                         <>
@@ -56,7 +56,7 @@ const VolumeController: React.FC<Props> = ({ volumen, setVolumen }) => {
                             </Box>
                         </>
                     ) : isSelected ? (
-                        <Center marginX="0.5rem" paddingY="1rem" width="80%"  >
+                        <Center paddingY="1rem" width="80%"  >
                             <Box onClick={toggleVolumen} position="absolute" top="0" right="0" zIndex="10" >
                                 <MdClose fontSize="12" color="white" />
                             </Box>
@@ -79,7 +79,7 @@ const VolumeController: React.FC<Props> = ({ volumen, setVolumen }) => {
                         </Box>
                     )
                 }
-            </Box>
+            </Center>
         </Box>
     )
 }

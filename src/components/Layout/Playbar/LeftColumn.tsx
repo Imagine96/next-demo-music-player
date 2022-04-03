@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/layout";
+import { Box, Text, useMediaQuery } from "@chakra-ui/react";
 
 interface Props {
     songName: string
@@ -6,10 +6,13 @@ interface Props {
 }
 
 const LeftColumn: React.FC<Props> = ({ songName, artistName }) => {
+
+    const [widthMediaQueryController] = useMediaQuery('(min-width: 700px)')
+
     return (
-        <Box display="grid" placeContent="center" >
+        <Box display="grid" placeContent="center"  >
             <Box display="flex" flexDirection="column" >
-                <Text fontWeight="thin" fontSize="sm" > {songName ? songName : "No selection"}</Text>
+                <Text fontWeight="thin" maxWidth={widthMediaQueryController ? "auto" : "70%"} fontSize={widthMediaQueryController ? "sm" : "xx-small"} > {songName ? songName : "No selection"}</Text>
                 <Text fontWeight="thin" fontSize="x-small" > {artistName ? artistName : "No selection"}</Text>
             </Box>
         </Box>
