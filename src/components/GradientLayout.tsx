@@ -22,7 +22,7 @@ const GradientLayout: React.FC<Props> = ({ img, title, subtittle, description, c
             {noContent ? null : (
                 <Flex padding={{ sm: "0.5rem", md: "2rem" }} display="flex" flexDir="row" alignItems="flex-end" bg={`${color}.600`} align="end" width="full" justifyContent={{ sm: "space-between", md: "normal" }} >
                     <Center padding="1rem" >
-                        <Image boxSize="10rem" width={widthMediaQueryController ? "auto" : "5rem"} height={widthMediaQueryController ? "auto" : "5rem"} marginTop={widthMediaQueryController ? "auto" : "3rem"} boxShadow="2xl" src={img} borderRadius={roundImage ? "full" : "lg"} />
+                        <Image boxSize="10rem" width={widthMediaQueryController ? "10rem" : "5rem"} height={widthMediaQueryController ? "10rem" : "5rem"} marginTop={widthMediaQueryController ? "auto" : "3rem"} boxShadow="2xl" src={img} borderRadius={roundImage ? "full" : "lg"} />
                     </Center>
                     <Box padding="1rem" h="80%" display="flex" flexDirection="column" justifyContent="flex-end" lineHeight={{ sm: "1rem", md: "2rem" }} >
                         <Text fontSize="x-small" paddingLeft="2" fontWeight="bold" casing="uppercase" >
