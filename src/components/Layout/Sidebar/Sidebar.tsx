@@ -47,7 +47,7 @@ const Sidebar: React.FC<Props> = ({ }) => {
         <Box paddingY="2" display="grid" gridTemplateRows="0.1fr 0.2fr 1fr" gridTemplateColumns="1fr" gridGap="2" bg="black" textColor="gray.100" >
             <Box width="full" marginY="10px" borderColor={"gray.200"} paddingX="1rem" display="flex" gap="10px" flexDirection="row" placeItems="center" justifyContent="space-between" >
                 <Image src="/White logo - no background.svg" height={50} width={180} ></Image>
-                <Link href="https://github.com/Imagine96" passHref >
+                <Link href="https://github.com/Imagine96/next-demo-music-player" passHref >
                     <a target="_blank" >
                         <Image src="/github-icon-2.svg" height={30} width={30} ></Image>
                     </a>
@@ -56,7 +56,7 @@ const Sidebar: React.FC<Props> = ({ }) => {
             <Box width="full"  >
                 <List>
                     {NAVMENU.map(nav => (
-                        <ListItem marginY={1} _hover={{
+                        <ListItem cursor="pointer" marginY={1} _hover={{
                             bg: "dark.900",
                             transition: "background-color 0.3s"
                         }} display="flex" padding="0.2rem" paddingLeft={"2rem"} backgroundColor="#000000" flexDirection="row" placeItems="center" fontSize={14} key={nav.name} >
@@ -74,7 +74,7 @@ const Sidebar: React.FC<Props> = ({ }) => {
                 <Divider marginY={2.5} color="gray.900" width="70%" marginX="2rem" />
                 <List>
                     {MUSICMENU.map(nav => (
-                        <ListItem marginY={1} _hover={{
+                        <ListItem cursor="pointer" marginY={1} _hover={{
                             bg: "dark.900",
                             transition: "background-color 0.3s"
                         }} display="flex" padding="0.2rem" paddingLeft={"2rem"} backgroundColor="#000000" flexDirection="row" placeItems="center" fontSize={14} key={nav.name} >
@@ -92,7 +92,7 @@ const Sidebar: React.FC<Props> = ({ }) => {
                 <Divider marginY={2.5} color="gray.900" width="70%" marginX="2rem" />
             </Box>
             <Box overflowY="auto" maxHeight="50vh" paddingY="10px">
-                <Box paddingLeft="2rem" >
+                <Box cursor="default" paddingLeft="2rem" >
                     Your Playlists
                 </Box>
                 <List>

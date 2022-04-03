@@ -35,7 +35,7 @@ const VolumeController: React.FC<Props> = ({ volumen, setVolumen }) => {
                 {
                     widthMediaQueryController ? (
                         <>
-                            <Box display="flex" flexDirection="row" gap="0.5rem" placeContent="center" justifyContent="center" >
+                            <Box width="full" display="flex" flexDirection="row" gap="0.5rem" placeContent="center" justifyContent="center" >
                                 <Box display="flex" flexDirection="row" placeItems="center" >
                                     <MdVolumeDownAlt fontSize="24px" /><Text fontWeight="thin" fontSize="sm" >{Math.floor(volumen)}%</Text>
                                 </Box>
@@ -75,7 +75,7 @@ const VolumeController: React.FC<Props> = ({ volumen, setVolumen }) => {
                         </Center>
                     ) : (
                         <Box display="flex" onClick={toggleVolumen} flexDirection="row" placeItems="center" >
-                            <MdVolumeDownAlt fontSize="24px" /><Text fontWeight="thin" fontSize="sm" >{Math.floor(volumen)}%</Text>
+                            <MdVolumeDownAlt fontSize="24px" /><Text fontWeight="thin" fontSize={widthMediaQueryController ? "sm" : "xx-small"} >{Math.floor(volumen)}%</Text>
                         </Box>
                     )
                 }

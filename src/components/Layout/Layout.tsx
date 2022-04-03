@@ -16,7 +16,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
     return (
         <Box width={"100vw"} overflow="hidden" display={"grid"} position="relative" gridTemplateRows={{ sm: "unset", md: "0.9fr 0.1fr" }} gridAutoColumns={{ sm: "unset", md: "1fr" }} gridGap="0" height={"100vh"} >
-            <Center position="absolute" zIndex="10" top="2rem" width="full" visibility={{ sm: "visible", md: "hidden" }} onClick={() => setSideBarOpen(prev => !prev)} >
+            <Center position="absolute" zIndex="10" top="2rem" marginX="50%" visibility={{ sm: "visible", md: "hidden" }} onClick={() => setSideBarOpen(prev => !prev)} >
                 {sideBarOpen ? <MdClose color="white" fontSize="24px" /> : <MdMenuOpen color="white" fontSize="24px" />}
             </Center>
             <Box display="grid" overflowY="hidden" height="full" gridTemplateColumns={{ sm: "1fr", md: "0.2fr 0.8fr" }} gridTemplateRows={{ md: "1fr" }} gridGap="0" >

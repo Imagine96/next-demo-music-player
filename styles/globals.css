@@ -15,23 +15,35 @@ a {
   box-sizing: border-box;
 }
 
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #8f54a0 #ffffff;
+}
 
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #8f54a0 #ffffff;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+}
 
-  *::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.50);
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 10px;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #000;
-    border-radius: 10px;
+.intro {
+  animation: intro 0.1s ease-out forwards;
+}
+
+@keyframes intro {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
