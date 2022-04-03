@@ -1,6 +1,6 @@
 import { NextPage } from "next"
 import { useAuth } from "../src/hooks/useUser"
-import { Spinner } from "@chakra-ui/react"
+import { Spinner, Box } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { PopulatedSong } from "../src/components/SongsTable"
@@ -39,20 +39,21 @@ const Home: NextPage = () => {
     }
 
     return (
-
-        isLoading ?
-            <Spinner /> : user && imgUrl ? (
-                <GradientLayout color={getColor()}
-                    roundImage={true}
-                    description={`${user.playListCount} Playlists`}
-                    img={imgUrl}
-                    subtittle="Profile"
-                    title={user.username}
-                >
-                    <Search isSearching={isSearching} setIsSearching={setIsSearching} setSearchResult={setSearchResult} />
-                    {isSearching ? <Spinner /> : <SearchResultGrid content={searchResult} playHandler={playHandler} />}
-                </GradientLayout>
-            ) : <Spinner />
+        <Box>
+            {isLoading ?
+                <Spinner /> : user && imgUrl ? (
+                    <GradientLayout color={getColor()}
+                        roundImage={true}
+                        description={`${user.playListCount} Playlists`}
+                        img={imgUrl}
+                        subtittle="Profile"
+                        title={user.username}
+                    >
+                        <Search isSearching={isSearching} setIsSearching={setIsSearching} setSearchResult={setSearchResult} />
+                        {isSearching ? <Spinner /> : <SearchResultGrid content={searchResult} playHandler={playHandler} />}
+                    </GradientLayout>
+                ) : <Spinner />}
+        </Box>
     )
 }
 

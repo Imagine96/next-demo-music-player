@@ -19,13 +19,14 @@ interface Props {
     playHandler: (song?: PopulatedSong, songs?: PopulatedSong[]) => void
 }
 
-const Card: React.FC<Props> = ({ artist, song, playlist, playHandler }) => {
 
+
+const Card: React.FC<Props> = ({ artist, song, playlist, playHandler }) => {
 
     if (artist) {
         const { imgUrl, isLoading } = useRandomImage()
         return (
-            <Box bg="rgba(255, 255, 255, 0.2)" blur="8px" maxWidth="80%" transition="all" _hover={{
+            <Box className="intro" bg="rgba(255, 255, 255, 0.2)" blur="8px" maxWidth="80%" transition="all" _hover={{
                 boxShadow: "2xl"
             }} display="flex" flexDirection="column" placeItems="center" gap="2" boxShadow="xl" borderRadius="lg" padding="0.5rem" >
                 {isLoading ? <Spinner /> : <Image boxSize="4rem" borderRadius="full" width="80%" height="full" src={imgUrl} alt="random img" />}
@@ -36,7 +37,7 @@ const Card: React.FC<Props> = ({ artist, song, playlist, playHandler }) => {
     }
     else if (song) {
         return (
-            <Box bg="rgba(255, 255, 255, 0.2)" blur="8px" onClick={() => playHandler(song)} maxWidth="80%" transition="all" _hover={{
+            <Box className="intro" bg="rgba(255, 255, 255, 0.2)" blur="8px" onClick={() => playHandler(song)} maxWidth="80%" transition="all" _hover={{
                 boxShadow: "2xl"
             }} display="flex" flexDirection="column" placeItems="center" gap="2" boxShadow="xl" borderRadius="lg" padding="0.5rem" >
                 <Image boxSize="4rem" borderRadius="full" width="80%" height="full" src={song.img} alt="random img" />
@@ -48,7 +49,7 @@ const Card: React.FC<Props> = ({ artist, song, playlist, playHandler }) => {
     }
     else if (playlist) {
         return (
-            <Box bg="rgba(255, 255, 255, 0.2)" blur="8px" onClick={() => playHandler(undefined, playlist.songs)} maxWidth="80%" transition="all" _hover={{
+            <Box className="intro" bg="rgba(255, 255, 255, 0.2)" blur="8px" onClick={() => playHandler(undefined, playlist.songs)} maxWidth="80%" transition="all" _hover={{
                 boxShadow: "2xl"
             }} display="flex" flexDirection="column" placeItems="center" gap="2" boxShadow="xl" borderRadius="lg" padding="0.5rem" >
                 <Image boxSize="4rem" borderRadius="full" width="80%" height="full" src={playlist.img} alt="random img" />

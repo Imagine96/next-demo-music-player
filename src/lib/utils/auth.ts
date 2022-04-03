@@ -57,7 +57,6 @@ export const logIn = async (password: string, email: string, res: NextApiRespons
             email: email
         }
     })
-
     if (user && bcrypt.compareSync(password, user.password)) {
         setAuthCookieHeader(user.id, user.email, res)
 
@@ -65,6 +64,7 @@ export const logIn = async (password: string, email: string, res: NextApiRespons
         res.json(user)
         return
     } else {
+        console.log("error")
         throw new Error()
     }
 }

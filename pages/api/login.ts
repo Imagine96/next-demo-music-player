@@ -9,6 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const { email, password } = req.body
 
+
     if (!email || !password) {
         res.status(400)
         res.json({ message: "bad req" })
@@ -16,6 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
+        console.log(req.body)
         await logIn(password, email, res)
         return
     } catch (err) {

@@ -61,11 +61,16 @@ const MusicPlayerControllers: React.FC<Props> = ({ activeSong, songs, volumen })
         }
         cancelAnimationFrame(timerId)
 
-    }, [isPlaying, isSeeking])
+    }, [isPlaying, isSeeking, activeSong])
+
+    useEffect(() => {
+        setSeek(0.0)
+    }, [activeSong])
 
     useEffect(() => {
         if (songs && index !== -1) {
             setActiveSong(songs[index])
+            setSeek(0.0)
         }
     }, [index, songs, setActiveSong])
 
@@ -131,7 +136,7 @@ const MusicPlayerControllers: React.FC<Props> = ({ activeSong, songs, volumen })
             {
                 activeSong !== null ? <ReactHowler onLoad={onLoadHandler} onEnd={onEndHandler} ref={soundRef} playing={isPlaying} src={activeSong.url} /> : null
             }
-            <Box color="gray.600" display="flex" flexDirection="row" placeItems="center" gap="1rem" justifyContent="space-around" >
+            <Box color="gray.600" padding="0.3rem" display="flex" flexDirection="row" placeItems="center" gap="1rem" justifyContent="space-around" >
                 <ButtonGroup>
                     <IconButton color={random ? "white" : "gray.600"} onClick={toggleRandom} outline="none" variant="link" aria-label="shuffle" fontSize="16px" icon={<MdShuffle />} />
                     <IconButton onClick={prevSong} outline="none" variant="link" aria-label="skip previous" fontSize="16px" icon={<MdSkipPrevious />} />
@@ -178,7 +183,7 @@ export default MusicPlayerControllers
 function getIndex(songs: PopulatedSong[], targetSong: PopulatedSong) {
     let resp = -1
     songs.forEach((song, index) => {
-        if (song.id === targetSong.id) {
+        if (song.name === targetSong.name) {
             resp = index
         }
     })

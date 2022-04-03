@@ -1,12 +1,11 @@
 import { Box, Text } from "@chakra-ui/layout"
-import { Table, Thead, Tr, Tbody, Th, IconButton, Image } from "@chakra-ui/react"
+import { Table, Thead, Tr, Tbody, Th, IconButton, Image, useMediaQuery } from "@chakra-ui/react"
 import { BsFillPlayFill } from "react-icons/bs"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { Song } from "@prisma/client"
 import { formatDate, formatTime } from "../lib/formaters"
 import { MdOutlineFavorite } from "react-icons/md"
 import { useState } from "react"
-import { updateFavorites } from "../lib/utils/user"
 import { fetcher } from "../lib/utils/fetchers"
 
 export interface PopulatedSong extends Song {
@@ -27,6 +26,8 @@ interface Props {
 const SongsTable: React.FC<Props> = ({ songs, playHandler, favorites, favoriteOnly, userId }) => {
 
     const [favoriteSongs, setFavoriteSongs] = useState(favorites)
+
+    const [childrenMediaQueryController] = useMediaQuery('(min-width: 700px)')
 
     const favoritesUpdateHandler = async (songId: number) => {
         try {
@@ -50,22 +51,22 @@ const SongsTable: React.FC<Props> = ({ songs, playHandler, favorites, favoriteOn
     }
 
     return (
-        <Box bg="transparent" maxHeight="30vh" padding="1rem" paddingBottom="2rem">
+        <Box bg="transparent" padding={"1rem"} marginBottom="10vh">
             <Box marginBottom="1rem" >
                 <IconButton onClick={() => playHandler()} icon={<BsFillPlayFill fontSize="24px" />} colorScheme="green" size="md" isRound aria-label="play" />
             </Box>
-            <Table padding="1" paddingBottom="1rem" bg="rgba(255,255,255, 0.1)" backdropBlur="8px" rounded="md" variant="unstyled" >
+            <Table padding="1" overflowY="auto" paddingBottom="1rem" bg="rgba(255,255,255, 0.1)" backdropBlur="8px" rounded="md" variant="unstyled" >
                 <Thead borderBottom="1px" borderColor="rgb(255, 255, 255, 0.2)" >
                     <Tr>
                         <Th>#</Th>
                         <Th>Title</Th>
-                        <Th>Artist</Th>
-                        {favoriteOnly ? null : <Th><MdOutlineFavorite color="green.600" aria-label="favprite" /></Th>}
-                        <Th>Date added</Th>
+                        {childrenMediaQueryController ? <Th>Artist</Th> : null}
+                        {childrenMediaQueryController ? <Th><MdOutlineFavorite color="green.600" aria-label="favprite" /></Th> : null}
+                        {childrenMediaQueryController ? <Th>Date added</Th> : null}
                         <Th><AiOutlineClockCircle /></Th>
                     </Tr>
                 </Thead>
-                <Tbody overflow="auto" >
+                <Tbody fontSize={{ sm: "x-small", md: "md" }} overflow="auto" >
                     {
                         songs.map((song, index) => {
                             return <Tr
@@ -79,10 +80,10 @@ const SongsTable: React.FC<Props> = ({ songs, playHandler, favorites, favoriteOn
                                 cursor="pointer"
                             >
                                 <Th> {index + 1} </Th>
-                                <Th onClick={() => playHandler(song)} display="flex" flexDirection="row" gap="1rem" > <Image width="20px" src={song.img} /> <Text fontWeight="thin" > {song.name} </Text> </Th>
-                                <Th><Text fontWeight="thin" > {song.artist.name} </Text></Th>
+                                <Th onClick={() => playHandler(song)} display="flex" flexDirection="row" gap={{ sm: "0.2rem", md: "1rem" }} > {childrenMediaQueryController ? <Image width="20px" src={song.img} /> : null} <Text fontWeight="thin" > {song.name} </Text> </Th>
+                                {childrenMediaQueryController ? <Th ><Text fontWeight="thin" > {song.artist.name} </Text></Th> : null}
                                 {
-                                    favoriteOnly ? null : (
+                                    favoriteOnly ? null : childrenMediaQueryController ? (
                                         <Th>
                                             <MdOutlineFavorite
                                                 color={favoriteSongs.indexOf(song.id) !== -1 ? "#349362" : ""}
@@ -90,9 +91,9 @@ const SongsTable: React.FC<Props> = ({ songs, playHandler, favorites, favoriteOn
                                                 onClick={() => favoritesUpdateHandler(song.id)}
                                             />
                                         </Th>
-                                    )
+                                    ) : null
                                 }
-                                <Th onClick={() => playHandler(song)} fontWeight="thin">{formatDate(song.createdAt)}</Th>
+                                {childrenMediaQueryController ? <Th onClick={() => playHandler(song)} fontWeight="thin">{formatDate(song.createdAt)}</Th> : null}
                                 <Th onClick={() => playHandler(song)} fontWeight="thin">{formatTime(song.duration)}</Th>
                             </Tr>
                         })
